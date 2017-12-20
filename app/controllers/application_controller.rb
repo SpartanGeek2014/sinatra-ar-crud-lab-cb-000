@@ -28,7 +28,7 @@ class ApplicationController < Sinatra::Base
 
   get '/posts/:id/edit' do #loads edit form
     @post = Post.find_by_id(params[:id])
-    redirects to '/posts/:id'
+    erb :edit
   end
 
   post '/posts/:id' do  #updates a post
@@ -36,7 +36,7 @@ class ApplicationController < Sinatra::Base
     @post.name = params[:name]
     @post.content = params[:content]
     @post.save
-    erb :show
+    redirects to '/posts/:id'
   end
 
   delete '/posts/:id/delete' do #delete action
