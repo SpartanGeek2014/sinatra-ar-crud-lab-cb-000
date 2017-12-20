@@ -3,7 +3,6 @@ require_relative '../../config/environment'
 class ApplicationController < Sinatra::Base
 
   configure do
-    set :database, 'sqlite3:db/create_post.db'
     set :public_folder, 'public'
     set :views, 'app/views'
   end
@@ -32,7 +31,7 @@ class ApplicationController < Sinatra::Base
     erb :edit
   end
 
-  post '/posts/:id' do  #updates a post
+  patch '/posts/:id' do  #updates a post
     @post = Post.find_by_id(params[:id])
     @post.name = params[:name]
     @post.content = params[:content]
