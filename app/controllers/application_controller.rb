@@ -13,12 +13,12 @@ class ApplicationController < Sinatra::Base
 
   post '/posts' do  #creates a post
     @post = Post.create(params)
-    redirect to '/posts/:id'
+    redirect to '/posts'
   end
 
   get '/posts' do #loads index page
     @posts = Post.all
-    erb :index
+    redirect to '/posts/:id'
   end
 
   get '/posts/:id' do  #loads show page
