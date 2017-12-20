@@ -36,7 +36,7 @@ class ApplicationController < Sinatra::Base
     @post.name = params[:name]
     @post.content = params[:content]
     @post.save
-    redirects to '/posts/:id'
+    erb :show
   end
 
   delete '/posts/:id/delete' do #delete action
