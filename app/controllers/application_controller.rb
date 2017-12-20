@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
 
   get '/posts' do #loads index page
     @posts = Post.all
-    redirect to '/posts/:id'
+    erb :index
   end
 
   get '/posts/:id' do  #loads show page
@@ -31,7 +31,7 @@ class ApplicationController < Sinatra::Base
     erb :edit
   end
 
-  post '/posts/:id' do  #updates a post
+  patch '/posts/:id' do  #updates a post
     @post = Post.find_by_id(params[:id])
     @post.name = params[:name]
     @post.content = params[:content]
